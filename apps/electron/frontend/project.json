@@ -1,0 +1,59 @@
+{
+  "name": "electron-frontend",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/electron/frontend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx-electron:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/electron/frontend",
+        "main": "apps/electron/frontend/src/main.ts",
+        "tsConfig": "apps/electron/frontend/tsconfig.app.json",
+        "assets": ["apps/electron/frontend/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/electron/frontend/src/environments/environment.ts",
+              "with": "apps/electron/frontend/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "nx-electron:execute",
+      "options": {
+        "buildTarget": "electron-frontend:build"
+      }
+    },
+    "package": {
+      "executor": "nx-electron:package",
+      "options": {
+        "name": "electron-frontend",
+        "frontendProject": "frontend",
+        "sourcePath": "dist/apps",
+        "outputPath": "dist/packages",
+        "prepackageOnly": true
+      }
+    },
+    "make": {
+      "executor": "nx-electron:make",
+      "options": {
+        "name": "electron-frontend",
+        "frontendProject": "frontend",
+        "sourcePath": "dist/apps",
+        "outputPath": "dist/executables"
+      }
+    },
+    "lint": {
+      "command": "eslint apps/electron/frontend/**/*.ts"
+    }
+  }
+}
