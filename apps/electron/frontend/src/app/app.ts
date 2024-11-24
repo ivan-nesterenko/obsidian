@@ -97,8 +97,8 @@ export default class App {
     });
   }
 
+  // load the index.html of the app.
   private static loadMainWindow() {
-    // load the index.html of the app.
     if (!App.application.isPackaged) {
       App.mainWindow.loadURL(`http://localhost:${rendererAppPort}`);
     } else {
