@@ -5,6 +5,19 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "postinstall": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm drizzle-kit push --config={projectRoot}/drizzle.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["{projectRoot}/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",

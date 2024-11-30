@@ -39,6 +39,16 @@
       "exclude": ["apps/backend-e2e/**/*"]
     }
   ],
+  "targetDefaults": {
+    "lint": {
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintignore",
+        "{workspaceRoot}/eslint.config.mjs"
+      ]
+    }
+},
   "generators": {
     "@nx/react": {
       "application": {
@@ -55,6 +65,5 @@
         "linter": "eslint"
       }
     }
-  },
-  "defaultProject": "electron-frontend"
+  }
 }

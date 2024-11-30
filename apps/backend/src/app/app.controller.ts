@@ -10,8 +10,4 @@ export class AppController {
     return this.appService.getData();
   }
 
-  @Get()
-  getFirstRole() {
-    return this.appService.getFirstRole();
-  }
 }

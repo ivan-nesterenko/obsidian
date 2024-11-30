@@ -1,21 +1,21 @@
-import { Inject, Injectable } from '@nestjs/common';
+import {  Inject, Injectable } from '@nestjs/common';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import * as schema from '../drizzle/schema';
-import { DrizzleAsyncProvider } from '../drizzle/drizzle.provider';
+import {schema} from '../db';
 
 @Injectable()
-export class AppService {
+export class AppService implements BaseService {
   constructor(
-    @Inject(DrizzleAsyncProvider)
-    private db: NodePgDatabase<typeof schema>
+    @Inject('DB_DEV') private drizzleDev: NodePgDatabase<typeof schema>,
   ) {}
 
-  getData(): { message: string } {
-    return { message: 'Hello API' };
+  async getData() {
+    const books = await this.drizzleDev.query.books.findMany();
+    const authors = await this.drizzleDev.query.authors.findMany();
+    return {
+      books: books,
+      authors: authors,
+    };
   }
 
-  async getFirstRole() {
-    const existingUserRole = await this.db.query.user_role.findFirst({});
-    return existingUserRole;
-  }
+ 
 }
