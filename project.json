@@ -1,0 +1,32 @@
+{
+  "name": "obsidian",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "dependsOn": [
+        {
+          "target": "serve",
+          "projects": "backend"
+        },
+        {
+          "target": "serve",
+          "projects": "frontend"
+        },
+        {
+          "target": "serve",
+          "projects": "electron-frontend"
+        }
+      ],
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          "nx run electron-frontend:serve",
+          "nx run frontend:serve",
+          "nx run api:serve"
+        ]
+      }
+    }
+  }
+}
