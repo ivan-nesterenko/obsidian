@@ -24,7 +24,10 @@
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@obsidian/ui-shared": ["libs/ui-shared/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
