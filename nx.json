@@ -32,23 +32,21 @@
       }
     },
     {
-      "plugin": "@nx/jest/plugin",
+      "plugin": "@nx/rollup/plugin",
       "options": {
-        "targetName": "test"
-      },
-      "exclude": ["apps/backend-e2e/**/*"]
+        "buildTargetName": "build"
+      }
     }
   ],
   "targetDefaults": {
     "lint": {
       "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.mjs"
-      ]
+      "inputs": ["default", "{workspaceRoot}/.eslintignore", "{workspaceRoot}/eslint.config.mjs"]
     }
-},
+  },
+  "targets": {
+    "project": {}
+  },
   "generators": {
     "@nx/react": {
       "application": {
@@ -62,7 +60,8 @@
       },
       "library": {
         "style": "tailwind",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "none"
       }
     }
   }
