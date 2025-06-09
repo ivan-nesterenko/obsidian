@@ -8,8 +8,12 @@
     "allowSyntheticDefaultImports": true,
     "strict": true
   },
-  "files": [],
-  "include": [],
+  "files": [
+    "./global.d.ts"
+  ],
+  "include": [
+    "./global.d.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.app.json"
