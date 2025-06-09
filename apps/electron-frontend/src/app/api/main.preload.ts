@@ -1,6 +1,7 @@
-import { contextBridge, ipcRenderer } from 'electron';
+import { contextBridge, ipcRenderer } from "electron";
 
-contextBridge.exposeInMainWorld('electron', {
-  getAppVersion: () => ipcRenderer.invoke('get-app-version'),
-  platform: process.platform,
+contextBridge.exposeInMainWorld("electron", {
+  minimize: () => ipcRenderer.invoke("window-minimize"),
+  toggleMaximize: () => ipcRenderer.invoke("window-toggle-maximize"),
+  close: () => ipcRenderer.invoke("window-close")
 });

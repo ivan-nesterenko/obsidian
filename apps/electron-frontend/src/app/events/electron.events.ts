@@ -1,10 +1,5 @@
-/**
- * This module is responsible on handling all the inter process communications
- * between the frontend to the electron backend.
- */
-
-import { app, ipcMain } from 'electron';
-import { environment } from '../../environments/environment';
+import { app, ipcMain } from "electron";
+import { close, minimize, toggleMaximize } from "../api/controllers/windowControllers";
 
 export default class ElectronEvents {
   static bootstrapElectronEvents(): Electron.IpcMain {
@@ -12,14 +7,11 @@ export default class ElectronEvents {
   }
 }
 
-// Retrieve app version
-ipcMain.handle('get-app-version', (event) => {
-  console.log(`Fetching application version... [v${environment.version}]`);
+ipcMain.handle("window-close", close);
+ipcMain.handle("window-minimize", minimize);
+ipcMain.handle("window-toggle-maximize", toggleMaximize);
 
-  return environment.version;
-});
-
-// Handle App termination
-ipcMain.on('quit', (event, code) => {
+// Handle WindowMain termination
+ipcMain.on("quit", (event, code) => {
   app.exit(code);
 });
