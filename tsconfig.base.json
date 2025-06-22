@@ -13,7 +13,10 @@
     "target": "es2022",
     "module": "esnext",
     "strict": true,
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
@@ -26,8 +29,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@obsidian/ui-shared": ["libs/ui-shared/src/index.ts"]
+      "@/ui-shared/*": [
+        "./libs/ui-shared/src/*"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
