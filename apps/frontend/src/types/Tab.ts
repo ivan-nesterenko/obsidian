@@ -1,6 +1,7 @@
 export enum TabType {
-  "note",
-  "graph"
+  Note = "note",
+  EmptyTab = "Empty Tab",
+  Graph = "graph"
 };
 
 export type Tab = {

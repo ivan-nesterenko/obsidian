@@ -5,7 +5,8 @@
   "scripts": {
     "postinstall": "electron-builder install-app-deps && electron-builder install-app-deps && electron-builder install-app-deps && pnpm nx run-many -t postinstall",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit generate"
+    "db:migrate": "drizzle-kit generate",
+    "lint": "drizzle-kit generate"
   },
   "private": true,
   "dependencies": {

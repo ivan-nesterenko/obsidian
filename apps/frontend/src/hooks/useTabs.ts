@@ -1,30 +1,35 @@
-// import React, { useContext, useState } from 'react';
-// import { Tab } from '../types/Tab';
-//
-//
-// export const useTabs()=> {
-//   const [tabs, setTabs] = useState<Tab[]>();
-//   const [activeTab, setActiveTab] = useState();
-//
-//   const createNote = () => {
-//     setTabs()
-//   };
-//
-//   const deleteNote = () => {};
-//   const closeTab = () => {};
-//
-//   const [notes, setNotes] = useState<Note[]>([]);
-//   const value = {
-//     createNote: () => setNotes(ns => [...ns, {/* ... */}]),
-//     deleteNote: () => {/* ... */},
-//   };
-//   return <NotesContext.Provider value={value}>{children}</NotesContext.Provider>;
-// }
-//
-// export function useTabs() {
-//   const ctx = useContext(NotesContext);
-//
-//   if (!ctx) throw new Error("useTabs must be inside NotesProvider");
-//
-//   return ctx;
-// }
+import { useState, Dispatch, SetStateAction } from "react";
+import { Tab } from "../types/Tab";
+import { defaultEmptyTab } from "../constants/defaultTabs";
+
+type UseTabsResult = [
+  tabs: Tab[] | [],
+  activeTab: number,
+  setActiveTab?: Dispatch<SetStateAction<number>>,
+  createTab: (newTab?: Tab) => void,
+  closeTab: () => void,
+];
+
+export const useTabs = (): UseTabsResult => {
+  const [tabs, setTabs] = useState<Tab[] | []>([]);
+  const [activeTab, setActiveTab] = useState(0);
+
+  const createTab = (newTab: Tab = defaultEmptyTab) => {
+    setTabs((prevItems) => {
+      setActiveTab(activeTab + 1);
+      return [...prevItems.slice(0, activeTab + 1), newTab, ...prevItems.slice(activeTab + 1)];
+    });
+  };
+
+  const closeTab = () => {
+    setTabs((prevItems) => {
+      if (prevItems.length === 1) {
+        return [defaultEmptyTab];
+      } else {
+        return prevItems?.filter((_, index) => index !== activeTab);
+      }
+    });
+  };
+
+  return [tabs, activeTab, setActiveTab, createTab, closeTab];
+};

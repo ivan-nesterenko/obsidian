@@ -2,17 +2,13 @@ import nx from "@nx/eslint-plugin";
 import baseConfig from "../../eslint.config.mjs";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
+import tseslint from "typescript-eslint";
 
-module.exports = [
+export default tseslint.config(
   ...baseConfig,
   ...nx.configs["flat/react"],
-  ...reactPlugin.configs.flat.recommended,
-  ...reactPlugin.configs.flat["jsx-runtime"],
-  {
-    plugins: {
-      "react-hooks": reactHooksPlugin,
-    },
-  },
+  reactPlugin.configs.flat.recommended,
+  reactPlugin.configs.flat["jsx-runtime"],
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
     rules: {
@@ -63,4 +59,4 @@ module.exports = [
       ],
     },
   },
-];
+);

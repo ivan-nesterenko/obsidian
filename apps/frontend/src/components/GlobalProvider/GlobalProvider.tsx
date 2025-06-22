@@ -1,11 +1,16 @@
 import { createContext, FC, PropsWithChildren } from "react";
 import { GlobalContextType } from "./types";
-import { useGlobalKeyBindings } from "../../hooks/useGlobalBindings";
+import { useGlobalKeyBindings } from "@/hooks/useGlobalBindings";
+import { useTabs } from "@/hooks/useTabs";
 
 const GlobalContext = createContext<GlobalContextType>({});
 
-export const GlobalProvider: FC<PropsWithChildren> = ({children}) => {
-  const [] = useGlobalKeyBindings();
+const GlobalProvider: FC<PropsWithChildren> = ({children}) => {
+  const [tabs, activeTab, setActiveTab, createTab, closeTab] = useTabs();
 
-  return <GlobalContext.Provider value={}>{children}</GlobalContext.Provider>;
+  useGlobalKeyBindings(tabs, activeTab, createTab, closeTab);
+
+  return <GlobalContext.Provider value={{tabs, activeTab, setActiveTab, createTab, closeTab}}>{children}</GlobalContext.Provider>;
 }
+
+export default GlobalProvider;

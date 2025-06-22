@@ -1,9 +1,25 @@
-import { useEffect, useState, useRef, useLayoutEffect } from "react";
-import { getBindingByName, makeKeyBindings } from "../config/keyBindings";
+import { useRef, useLayoutEffect } from "react";
+import { getBindingByName, makeKeyBindings } from "@/config/keyBindings";
+import { defaultNote } from "@/constants/defaultTabs";
+import { Tab } from "@/types/Tab";
 
-export function useGlobalKeyBindings() {
+type UseGlobalKeyBindingsProps = {
+  tabs: Tab[] | [],
+  activeTab: number,
+  createTab: (newTab?: Tab) => void,
+  closeTab: () => void,
+};
+
+export const useGlobalKeyBindings = ({ tabs, activeTab, createTab, closeTab }: UseGlobalKeyBindingsProps) => {
   const keysRef = useRef<Set<string>>(new Set());
-  const [tabs, addTab, removeTab] = useTabs([]);
+
+  const createNote = () => {
+    createTab(defaultNote);
+  };
+
+  const deleteNote = () => {
+    closeTab();
+  };
 
   const keyAction = makeKeyBindings({ createNote, deleteNote, closeTab });
 
@@ -42,6 +58,5 @@ export function useGlobalKeyBindings() {
     };
   }, []);
 
-  return []
-}
-
+  return [tabs, activeTab, setActiveTab, createTab, closeTab];
+};
