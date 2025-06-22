@@ -1,6 +1,6 @@
 import {  Inject, Injectable } from '@nestjs/common';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import {schema} from '../db';
+import * as schema from "../db";
 
 @Injectable()
 export class AppService implements BaseService {
@@ -14,8 +14,7 @@ export class AppService implements BaseService {
     return {
       books: books,
       authors: authors,
+      ok: true,
     };
   }
-
- 
 }
