@@ -1,12 +1,16 @@
 import WindowHeader from "../../components/WindowHeader";
 import WindowMain from "../../components/WindowMain";
 import { FC } from "react";
+import SidebarPanel from "../../components/SidebarPanel";
 
 const Main: FC = () => {
   return (
-    <div>
+    <div className="bg-black">
       <WindowHeader />
-      <WindowMain />
+      <div className="flex flex-col">
+        <SidebarPanel/>
+        <WindowMain />
+      </div>
     </div>
   )
 }

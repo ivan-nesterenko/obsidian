@@ -48,7 +48,7 @@ module.exports = [
             },
           ],
           pathGroupsExcludedImportTypes: ["react"],
-          "newlines-between": "never",
+          "newlines-becvaeen": "never",
           alphabetize: {
             order: "asc",
             caseInsensitive: true,
