@@ -5,10 +5,32 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "postinstall": {
+    "bd-serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm drizzle-kit push --config={projectRoot}/drizzle.config.ts"
+        "commands": [
+          "docker compose up -d --build"
+        ]
+      }
+    },
+    "studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "pnpm drizzle-kit studio --config={projectRoot}/drizzle.config.ts"
+        ]
+      }
+    },
+    "generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm drizzle-kit generate --config={projectRoot}/drizzle.config.ts"
+      }
+    },
+    "migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm drizzle-kit migrate --config={projectRoot}/drizzle.config.ts"
       }
     },
     "lint": {

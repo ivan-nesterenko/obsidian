@@ -1,3 +1,3 @@
-export * as schema  from './schema';
+import {notes} from "./schemas/notes.schema";
 
-
+export {notes};
