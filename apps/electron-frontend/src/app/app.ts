@@ -33,7 +33,7 @@ export default class App {
   }
 
   // private static onRedirect(event: any, url: string) {
-  //   if (url !== WindowMain.mainWindow.webContents.getURL()) {
+  //   if (url !== window-main.mainWindow.webContents.getURL()) {
   //     // this is a normal external redirect, open it in a new browser window
   //     event.preventDefault();
   //     shell.openExternal(url);
@@ -86,9 +86,9 @@ export default class App {
     });
 
     // handle all external redirects in a new browser window
-    // WindowMain.mainWindow.webContents.on('will-navigate', WindowMain.onRedirect);
-    // WindowMain.mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options) => {
-    //     WindowMain.onRedirect(event, url);
+    // window-main.mainWindow.webContents.on('will-navigate', window-main.onRedirect);
+    // window-main.mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options) => {
+    //     window-main.onRedirect(event, url);
     // });
 
     // Emitted when the window is closed.
@@ -116,7 +116,7 @@ export default class App {
   }
 
   static main(app: Electron.App, browserWindow: typeof BrowserWindow) {
-    // we pass the Electron.WindowMain object and the
+    // we pass the Electron.window-main object and the
     // Electron.BrowserWindow into this function
     // so this class has no dependencies. This
     // makes the code easier to write tests for
@@ -125,7 +125,7 @@ export default class App {
     App.application = app;
 
     App.application.on("window-all-closed", App.onWindowAllClosed); // Quit when all windows are closed.
-    App.application.on("ready", App.onReady); // WindowMain is ready to load data
-    App.application.on("activate", App.onActivate); // WindowMain is activated
+    App.application.on("ready", App.onReady); // window-main is ready to load data
+    App.application.on("activate", App.onActivate); // window-main is activated
   }
 }

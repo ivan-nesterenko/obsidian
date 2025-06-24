@@ -1,6 +1,6 @@
 import {  Inject, Injectable } from '@nestjs/common';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import * as schema from "../db";
+import * as schema from "./db";
 
 @Injectable()
 export class AppService implements BaseService {
@@ -9,11 +9,7 @@ export class AppService implements BaseService {
   ) {}
 
   async getData() {
-    const books = await this.drizzleDev.query.books.findMany();
-    const authors = await this.drizzleDev.query.authors.findMany();
     return {
-      books: books,
-      authors: authors,
       ok: true,
     };
   }
