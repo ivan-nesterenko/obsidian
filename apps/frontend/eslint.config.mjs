@@ -1,8 +1,9 @@
 import nx from "@nx/eslint-plugin";
-import baseConfig from "../../eslint.config.mjs";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import tseslint from "typescript-eslint";
+
+import baseConfig from "../../eslint.config.mjs";
 
 export default tseslint.config(
   ...baseConfig,
@@ -11,44 +12,42 @@ export default tseslint.config(
   reactPlugin.configs.flat["jsx-runtime"],
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+    ignores: ["./src/assets/*"],
     rules: {
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
+      "import/order": [
+        "error",
+        {
+          alphabetize: {
+            caseInsensitive: true,
+            order: "asc",
+          },
+          groups: ["builtin", "external", "internal", "parent"],
+          "newlines-between": "never",
+          pathGroups: [
+            {
+              group: "external",
+              pattern: "react*",
+              position: "before",
+            },
+            {
+              group: "external",
+              pattern: "@mui/**",
+              position: "before",
+            },
+          ],
+          pathGroupsExcludedImportTypes: ["react"],
+        },
+      ],
       "no-console": "warn",
+      "perfectionist/sort-imports": "off",
+      "react-hooks/exhaustive-deps": "off",
       "react/display-name": "off",
       "react/jsx-curly-brace-presence": [
         "warn",
         {
           props: "never",
-        },
-      ],
-      "react/react-in-jsx-scope": "off",
-      "react-hooks/exhaustive-deps": "off",
-      "react/self-closing-comp": "warn",
-      "react/jsx-key": "error",
-      "react/jsx-uses-react": "off",
-      "import/order": [
-        "error",
-        {
-          groups: ["builtin", "external", "internal", "parent"],
-          pathGroups: [
-            {
-              pattern: "react*",
-              group: "external",
-              position: "before",
-            },
-            {
-              pattern: "@mui/**",
-              group: "external",
-              position: "before",
-            },
-          ],
-          pathGroupsExcludedImportTypes: ["react"],
-          "newlines-becvaeen": "never",
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
         },
       ],
       "react/jsx-filename-extension": [
@@ -57,6 +56,11 @@ export default tseslint.config(
           extensions: [".ts", ".tsx"],
         },
       ],
+      "react/jsx-key": "error",
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
+      "react/self-closing-comp": "warn",
+      "unicorn/prefer-global-this": "off",
     },
   },
 );

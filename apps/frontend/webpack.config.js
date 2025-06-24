@@ -1,30 +1,44 @@
+/* eslint-disable */
+
+const ESLintPlugin = require('eslint-webpack-plugin');
+const { join, resolve } = require("node:path");
 const { NxAppWebpackPlugin } = require("@nx/webpack/app-plugin");
-const { NxReaccvaebpackPlugin } = require("@nx/react/webpack-plugin");
-const { join } = require("path");
 
 module.exports = {
+  devServer: {
+    historyApiFallback: {
+      disableDotRule: true,
+      htmlAcceptHeaders: ["text/html", "application/xhtml+xml"],
+      index: "./public/index.html",
+    },
+    port: 3000,
+  },
   output: {
     path: join(__dirname, "../../dist/apps/frontend"),
   },
-  devServer: {
-    port: 3000,
-    historyApiFallback: {
-      index: "./public/index.html",
-      disableDotRule: true,
-      htmlAcceptHeaders: ["text/html", "application/xhtml+xml"],
-    },
-  },
   plugins: [
     new NxAppWebpackPlugin({
-      tsConfig: "./tsconfig.app.json",
-      compiler: "babel",
-      main: "./src/index.tsx",
-      index: "./public/index.html",
-      baseHref: "/",
       assets: ["./public/favicon.ico", "./src/assets"],
-      styles: ["./public/styles.css"],
-      outputHashing: process.env["NODE_ENV"] === "production" ? "all" : "none",
+      baseHref: "/",
+      compiler: "babel",
+      index: "./public/index.html",
+      main: "./src/index.tsx",
       optimization: process.env["NODE_ENV"] === "production",
-    })
+      outputHashing: process.env["NODE_ENV"] === "production" ? "all" : "none",
+      styles: ["./public/styles.css"],
+      tsConfig: "./tsconfig.app.json",
+    }),
+    new ESLintPlugin({
+      quiet: true,
+      failOnError: true,
+      outputReport: true,
+      overrideConfigFile: join(__dirname, 'eslint.config.mjs'),
+      configType: "flat",
+      exclude: [
+        `model`,
+        `dist`,
+        `node_modules`,
+      ]
+    }),
   ],
 };
