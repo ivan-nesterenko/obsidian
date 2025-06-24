@@ -1,13 +1,11 @@
 import { FC } from "react";
-import Main from "./app/main/Main";
-import GlobalProvider from "./components/GlobalProvider";
+import Main from "./app/main";
+import GlobalProvider from "./components/global-provider";
 
-const App: FC = () => {
-  return (
-    <GlobalProvider>
-      <Main />
-    </GlobalProvider>
-  );
-};
+const App: FC = () => (
+  <GlobalProvider>
+    <Main />
+  </GlobalProvider>
+);
 
 export default App;

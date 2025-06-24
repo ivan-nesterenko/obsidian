@@ -1,7 +1,3 @@
-export const noteCreateHandler = async () => {
+export const noteCreateHandler = async () => {};
 
-};
-
-export const noteRemoveHandler = async () => {
-
-};
+export const noteRemoveHandler = async () => {};

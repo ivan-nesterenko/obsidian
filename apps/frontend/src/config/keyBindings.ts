@@ -5,19 +5,17 @@ export enum KeyBindings {
 }
 
 type Handlers = {
+  closeTab: () => void;
   createNote: () => void;
   deleteNote: () => void;
-  closeTab: () => void;
 };
 
-export const getBindingByName = (name: string): string | undefined => {
-  return KeyBindings[name as keyof typeof KeyBindings];
-};
+export const getBindingByName = (name: string): string | undefined => KeyBindings[name as keyof typeof KeyBindings];
 
 export function makeKeyBindings(handlers: Handlers): Record<string, () => void> {
   return {
+    [KeyBindings.CloseTab]: handlers.closeTab,
     [KeyBindings.CreateNote]: handlers.createNote,
     [KeyBindings.DeleteNote]: handlers.deleteNote,
-    [KeyBindings.CloseTab]: handlers.closeTab,
   };
 }

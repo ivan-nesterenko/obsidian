@@ -1,11 +1,11 @@
-import { Tab, TabType } from "../types/Tab";
+import { Tab, TabType } from "../types/tab";
 
 export const defaultNote: Tab = {
   title: "New Note",
-  type: TabType.Note,
+  type: TabType.NOTE,
 };
 
 export const defaultEmptyTab: Tab = {
   title: "New Tab",
-  type: TabType.EmptyTab,
+  type: TabType.EMPTY_TAB,
 };
