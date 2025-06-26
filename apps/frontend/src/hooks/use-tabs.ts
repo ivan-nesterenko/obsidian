@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { defaultEmptyTab } from "@/frontend/constants/defaultTabs";
-import { Tab } from "@/frontend/types/tab";
+import { defaultEmptyTab } from "../constants/default-tabs";
+import { Tab } from "../types/tab";
 
 type UseTabsResult = {
   activeTab: number;
-  closeTab: () => void;
+  closeTab: (tabToRemove?: number) => void;
   createTab: (newTab?: Tab) => void;
   setActiveTab?: Dispatch<SetStateAction<number>>;
   tabs: [] | Tab[];
@@ -21,10 +21,10 @@ export const useTabs = (): UseTabsResult => {
     });
   };
 
-  const closeTab = () => {
+  const closeTab = (tabToRemove = activeTab) => {
     setTabs((previousItems) =>
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      previousItems.length === 1 ? [defaultEmptyTab] : previousItems?.filter((_, index) => index !== activeTab),
+      previousItems.length === 1 ? [defaultEmptyTab] : previousItems?.filter((_, index) => index !== tabToRemove),
     );
   };
 

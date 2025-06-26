@@ -1,44 +1,35 @@
-/* eslint-disable */
-
-const ESLintPlugin = require('eslint-webpack-plugin');
-const { join, resolve } = require("node:path");
-const { NxAppWebpackPlugin } = require("@nx/webpack/app-plugin");
+const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
+const { NxReactWebpackPlugin } = require('@nx/react/webpack-plugin');
+const { join } = require('path');
 
 module.exports = {
-  devServer: {
-    historyApiFallback: {
-      disableDotRule: true,
-      htmlAcceptHeaders: ["text/html", "application/xhtml+xml"],
-      index: "./public/index.html",
-    },
-    port: 3000,
-  },
   output: {
-    path: join(__dirname, "../../dist/apps/frontend"),
+    path: join(__dirname, '../../dist/apps/frontend'),
+  },
+  devServer: {
+    port: 3000,
+    historyApiFallback: {
+      index: '/index.html',
+      disableDotRule: true,
+      htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'],
+    },
   },
   plugins: [
     new NxAppWebpackPlugin({
-      assets: ["./public/favicon.ico", "./src/assets"],
-      baseHref: "/",
-      compiler: "babel",
-      index: "./public/index.html",
-      main: "./src/index.tsx",
-      optimization: process.env["NODE_ENV"] === "production",
-      outputHashing: process.env["NODE_ENV"] === "production" ? "all" : "none",
-      styles: ["./public/styles.css"],
-      tsConfig: "./tsconfig.app.json",
+      tsConfig: './tsconfig.app.json',
+      compiler: 'babel',
+      main: './src/main.tsx',
+      index: './src/index.html',
+      baseHref: '/',
+      assets: ['./src/favicon.ico', './src/assets'],
+      styles: ['./src/styles.css'],
+      outputHashing: process.env['NODE_ENV'] === 'production' ? 'all' : 'none',
+      optimization: process.env['NODE_ENV'] === 'production',
     }),
-    new ESLintPlugin({
-      quiet: true,
-      failOnError: true,
-      outputReport: true,
-      overrideConfigFile: join(__dirname, 'eslint.config.mjs'),
-      configType: "flat",
-      exclude: [
-        `model`,
-        `dist`,
-        `node_modules`,
-      ]
+    new NxReactWebpackPlugin({
+      // Uncomment this line if you don't want to use SVGR
+      // See: https://react-svgr.com/
+      // svgr: false
     }),
   ],
 };

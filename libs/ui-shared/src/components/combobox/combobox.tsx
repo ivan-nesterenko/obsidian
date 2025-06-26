@@ -43,7 +43,7 @@ export const Combobox = <T extends { label: string; value: string }[]>({
       <PopoverTrigger asChild>
         <Button
           aria-expanded={open}
-          className="w-[200px] justify-becvaeen"
+          className="w-[200px] justify-between"
           role="combobox"
           variant="outline"
         >

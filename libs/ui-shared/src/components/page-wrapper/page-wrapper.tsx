@@ -3,11 +3,12 @@ import { FC, ReactNode } from "react";
 
 import { Footer, FooterProps } from "./footer/footer";
 import { Header, HeaderProps } from "./header/header";
+import { clsx } from "clsx";
 
 export type PageWrapperProps = {
   children: ReactNode;
   className?: string;
-  contencvarapperClassName?: string;
+  contentWrapperClassName?: string;
   isShown?: boolean;
 } & HeaderProps &
   FooterProps;
@@ -15,7 +16,7 @@ export type PageWrapperProps = {
 export const PageWrapper: FC<PageWrapperProps> = ({
   children,
   className,
-  contencvarapperClassName,
+  contentWrapperClassName,
   footer,
   footerClassName,
   header,
@@ -46,7 +47,7 @@ export const PageWrapper: FC<PageWrapperProps> = ({
       <main
         className={clsx(
           "flex h-full min-h-0 w-full flex-1 flex-col overflow-y-auto scroll-smooth",
-          contencvarapperClassName,
+          contentWrapperClassName,
         )}
         role="main"
       >

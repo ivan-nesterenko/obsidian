@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
-import { getBindingByName, makeKeyBindings } from "@/frontend/config/keyBindings";
-import { defaultNote } from "@/frontend/constants/defaultTabs";
-import { Tab } from "@/frontend/types/tab";
+import { getBindingByName, makeKeyBindings } from "../config/key-bindings";
+import { defaultNote } from "../constants/default-tabs";
+import { Tab } from "../types/tab";
 
 type UseGlobalKeyBindingsProperties = {
   activeTab: number;

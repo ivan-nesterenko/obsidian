@@ -5,7 +5,7 @@ import {
   ContextMenuItem,
   ContextMenuPortal,
   ContextMenuTrigger,
-} from "@/ui-shared/components/context-menu";
+} from "../../../../../libs/ui-shared/src/components/context-menu";
 
 const WindowMain: FC = () => (
   <ContextMenu>

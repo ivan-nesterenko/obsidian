@@ -1,7 +1,7 @@
 export enum KeyBindings {
-  CloseTab = "AltLeft+KeyW",
-  CreateNote = "ControlLeft+KeyN",
-  DeleteNote = "AltLeft+ShiftLeft+KeyZ",
+  CLOSE_TAB = "AltLeft+KeyW",
+  CREATE_NOTE = "ControlLeft+KeyN",
+  DELETE_NOTE = "AltLeft+ShiftLeft+KeyZ",
 }
 
 type Handlers = {
@@ -14,8 +14,8 @@ export const getBindingByName = (name: string): string | undefined => KeyBinding
 
 export function makeKeyBindings(handlers: Handlers): Record<string, () => void> {
   return {
-    [KeyBindings.CloseTab]: handlers.closeTab,
-    [KeyBindings.CreateNote]: handlers.createNote,
-    [KeyBindings.DeleteNote]: handlers.deleteNote,
+    [KeyBindings.CLOSE_TAB]: handlers.closeTab,
+    [KeyBindings.CREATE_NOTE]: handlers.createNote,
+    [KeyBindings.DELETE_NOTE]: handlers.deleteNote,
   };
 }
