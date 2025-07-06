@@ -1,3 +1,3 @@
-import {notes} from "./schemas/notes.schema";
+import { notes } from "./schemas/notes.schema";
 
-export {notes};
+export { notes };
