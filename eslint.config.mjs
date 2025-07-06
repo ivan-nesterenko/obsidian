@@ -141,6 +141,7 @@ export default tseslint.config(
           case: "kebabCase",
         },
       ],
+      "unicorn/no-abusive-eslint-disable": "off",
       "unicorn/no-static-only-class": "warn",
       "unused-imports/no-unused-imports": "error",
       "unused-imports/no-unused-vars": [
