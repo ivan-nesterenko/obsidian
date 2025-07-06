@@ -4,6 +4,7 @@
 
 html {
   width: 100vw;
+  height: 100vw;
 }
 
 ::-webkit-scrollbar {
@@ -34,9 +35,14 @@ body {
   @apply relative overflow-x-hidden bg-black;
 }
 
+#root, body {
+  height: 100%;
+  width: 100%;
+}
+
 @layer components {
   .placeholder-card {
-    @apply bg-top bg-repeat-x border-dashed border-[#3333334C] border-2;
+    @apply border-2 border-dashed border-[#3333334C] bg-top bg-repeat-x;
   }
 
   .title .link {
@@ -44,8 +50,9 @@ body {
   }
 
   .link {
-    @apply underline-offset-[4px] underline;
+    @apply underline underline-offset-[4px];
   }
+
   .black {
     @apply text-black;
   }
@@ -72,18 +79,18 @@ body {
 
   @media (min-width: 360px) {
     .bg-burger::after {
-      @apply right-[-40%] bottom-0;
+      @apply bottom-0 right-[-40%];
     }
   }
 
   @media (min-width: 640px) {
     .bg-burger::after {
-      @apply right-0 bottom-0;
+      @apply bottom-0 right-0;
     }
   }
 
   .scrolling-link {
-    @apply inline-block relative overflow-hidden no-underline;
+    @apply relative inline-block overflow-hidden no-underline;
   }
 
   .initial-content,
@@ -92,11 +99,12 @@ body {
   }
 
   .laptop-shadow::before {
-    content: ' ';
-    @apply absolute z-10 bottom-[-15%] w-[120%] h-[35%] bg-black/90 blur-[65px];
+    content: " ";
+    @apply absolute bottom-[-15%] z-10 h-[35%] w-[120%] bg-black/90 blur-[65px];
   }
+
   .hover-content {
-    @apply absolute top-full left-0 opacity-0;
+    @apply absolute left-0 top-full opacity-0;
   }
 
   .scrolling-link:hover .initial-content {
