@@ -3,7 +3,7 @@ import { getBindingByKeys, makeKeyBindings } from "../config/key-bindings";
 import { createDefaultNote } from "../constants/default-tabs";
 import { UseTabsOutput } from "../types/tab";
 
-export const useGlobalKeyBindings = ({ activeTab, closeTab, createTab, tabs }: Omit<UseTabsOutput, "setActiveTab">) => {
+export const useGlobalKeyBindings = ({ closeTab, createTab }: Omit<UseTabsOutput, "setActiveTab">) => {
   const keysReference = useRef<Set<string>>(new Set());
 
   const createNote = () => {

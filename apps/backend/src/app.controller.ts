@@ -3,5 +3,8 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  @Get("getSettings")
+  getData() {
+    return {ok: true, data: "No settings found"};
+  }
 }

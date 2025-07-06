@@ -3,7 +3,6 @@
 import { Content } from "@radix-ui/react-hover-card";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import clsx from "clsx";
-import clsx from "clsx";
 
 export const HoverCardContent = forwardRef<ElementRef<typeof Content>, ComponentPropsWithoutRef<typeof Content>>(
   ({ align = "center", className, sideOffset = 4, ...props }, ref) => (
