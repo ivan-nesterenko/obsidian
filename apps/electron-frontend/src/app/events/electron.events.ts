@@ -1,17 +1,18 @@
 import { app, ipcMain } from "electron";
-import { close, minimize, toggleMaximize } from "../api/controllers/windowControllers";
+import FileSystemEvents from "./file-system.events";
+import SettingsEvents from "./settings.events";
+import WindowEvents from "./window.events";
 
 export default class ElectronEvents {
   static bootstrapElectronEvents(): Electron.IpcMain {
+    FileSystemEvents.bootstrapElectronEvents();
+    SettingsEvents.bootstrapElectronEvents();
+    WindowEvents.bootstrapElectronEvents();
+
     return ipcMain;
   }
 }
 
-ipcMain.handle("window-close", close);
-ipcMain.handle("window-minimize", minimize);
-ipcMain.handle("window-toggle-maximize", toggleMaximize);
-
-// Handle window-main termination
 ipcMain.on("quit", (event, code) => {
   app.exit(code);
 });

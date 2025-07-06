@@ -2,7 +2,7 @@ import App from "../../app";
 
 export const close = () => {
   if (App.mainWindow) {
-    console.log(App.mainWindow)
+    console.log(App.mainWindow);
     App.mainWindow.close();
   }
 };
