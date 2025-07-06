@@ -78,19 +78,15 @@ export default class App {
 
     const modalWidth = Math.floor(fullWidth / 2);
     const modalHeight = Math.floor(fullHeight / 2);
-    const modalX = Math.floor(modalWidth / 2);
-    const modalY = Math.floor(modalHeight / 2);
 
     return {
       width: lastActiveVaultId ? preferencedWidth : modalWidth,
       height: lastActiveVaultId ? prefencedHeight : modalHeight,
-      x: lastActiveVaultId ? preferencedX : modalX,
-      y: lastActiveVaultId ? preferencedY : modalY,
     };
   }
 
   private static initMainWindow() {
-    const { width, height, x, y } = this.getPrimaryDisplay();
+    const { width, height} = this.getPrimaryDisplay();
 
     // Create the browser window-aside.
     App.mainWindow = new BrowserWindow({

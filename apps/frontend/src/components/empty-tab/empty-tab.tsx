@@ -9,7 +9,7 @@ const EmptyTab: FC = () => {
     return <main className="h-40px w-full bg-blue-200">No file is open</main>;
   }
 
-  const { closeTab, activeTab } = globalContext;
+  const { activeTab, closeTab } = globalContext;
 
   const switchCurrentToTab = () => {
     const newNote = createDefaultNote();

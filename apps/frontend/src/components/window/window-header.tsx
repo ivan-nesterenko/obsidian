@@ -1,7 +1,6 @@
 import { FC, useContext } from "react";
-import { GlobalContext } from "../global-provider/global-provider";
 import { clsx } from "clsx";
-import { WindowVaultManager } from "./window-vault-manager";
+import { GlobalContext } from "../global-provider/global-provider";
 
 const onClickMinimizeHandler = () => {
   window.electron.minimize();
