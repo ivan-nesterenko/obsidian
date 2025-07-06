@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Root, Thumb } from "@radix-ui/react-switch";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 

@@ -1,8 +1,20 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "../../../dist/out-tsc",
-    "types": ["node"]
+    "types": [
+      "node"
+    ],
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@/shared/*": [
+        "../../libs/shared/src/*"
+      ]
+    }
   },
-  "include": ["**/*.ts"]
+  "include": [
+    "./src/**/*.ts"
+  ]
 }

@@ -8,17 +8,13 @@
     "bd-serve": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "docker compose up -d --build"
-        ]
+        "commands": ["docker compose up -d --build"]
       }
     },
     "studio": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "pnpm drizzle-kit studio --config={projectRoot}/drizzle.config.ts"
-        ]
+        "commands": ["pnpm drizzle-kit studio --config={projectRoot}/drizzle.config.ts"]
       }
     },
     "generate": {

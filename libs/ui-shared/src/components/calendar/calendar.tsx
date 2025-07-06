@@ -1,20 +1,15 @@
 "use client";
 
-
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { ComponentProps, FC } from "react";
 import { DayPicker } from "react-day-picker";
+import clsx from "clsx";
 
 import { buttonVariants } from "../button/button";
 
 export type CalendarProps = ComponentProps<typeof DayPicker>;
 
-export const Calendar: FC<CalendarProps> = ({
-  className,
-  classNames,
-  showOutsideDays = true,
-  ...props
-}) => {
+export const Calendar: FC<CalendarProps> = ({ className, classNames, showOutsideDays = true, ...props }) => {
   return (
     <DayPicker
       className={clsx("p-3", className)}
@@ -27,10 +22,7 @@ export const Calendar: FC<CalendarProps> = ({
             ? "[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md"
             : "[&:has([aria-selected])]:rounded-md",
         ),
-        day: clsx(
-          buttonVariants({ variant: "ghost" }),
-          "h-8 w-8 p-0 font-normal aria-selected:opacity-100",
-        ),
+        day: clsx(buttonVariants({ variant: "ghost" }), "h-8 w-8 p-0 font-normal aria-selected:opacity-100"),
         day_disabled: "text-stone-500 opacity-50 dark:text-stone-400",
         day_hidden: "invisible",
         day_outside:

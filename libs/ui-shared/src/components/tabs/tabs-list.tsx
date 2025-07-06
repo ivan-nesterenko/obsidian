@@ -1,6 +1,7 @@
 "use client";
 
 import { List } from "@radix-ui/react-tabs";
+import clsx from "clsx";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 
 export const TabsList = forwardRef<ElementRef<typeof List>, ComponentPropsWithoutRef<typeof List>>(

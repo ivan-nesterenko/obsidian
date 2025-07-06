@@ -1,8 +1,8 @@
 "use client";
 
-
 import { Root } from "@radix-ui/react-avatar";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import clsx from "clsx";
 
 export const Avatar = forwardRef<ElementRef<typeof Root>, ComponentPropsWithoutRef<typeof Root>>(
   ({ className, ...props }, ref) => (

@@ -1,6 +1,5 @@
 "use client";
 
-
 import { SelectProps as RadixSelectProps, Root } from "@radix-ui/react-select";
 import { FC } from "react";
 
@@ -13,13 +12,7 @@ export type SelectProps = {
   label?: string;
 } & RadixSelectProps;
 
-export const Select: FC<SelectProps> = ({
-  children,
-  containerClassName,
-  error,
-  label,
-  ...props
-}) => {
+export const Select: FC<SelectProps> = ({ children, containerClassName, error, label, ...props }) => {
   return (
     <div className={clsx("max-w-full", containerClassName)}>
       {!!label && <Label>{label}</Label>}

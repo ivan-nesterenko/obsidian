@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Root } from "@radix-ui/react-toggle-group";
 import { VariantProps } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
@@ -22,14 +21,8 @@ export const ToggleGroup = forwardRef<ToggleGroupRef, ToggleGroupProps>(
   ({ children, className, containerClassName, error, label, size, variant, ...props }, ref) => (
     <div className={clsx("max-w-full", containerClassName)}>
       {!!label && <Label>{label}</Label>}
-      <Root
-        className={clsx("flex items-center justify-center gap-1", className)}
-        ref={ref}
-        {...props}
-      >
-        <ToggleGroupContext.Provider value={{ size, variant }}>
-          {children}
-        </ToggleGroupContext.Provider>
+      <Root className={clsx("flex items-center justify-center gap-1", className)} ref={ref} {...props}>
+        <ToggleGroupContext.Provider value={{ size, variant }}>{children}</ToggleGroupContext.Provider>
       </Root>
       <FormError className="w-full text-end" errorText={error} />
     </div>

@@ -1,4 +1,3 @@
-
 import { FC, ReactNode } from "react";
 
 import { Footer, FooterProps } from "./footer/footer";

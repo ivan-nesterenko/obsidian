@@ -2,6 +2,7 @@
 
 import { Item } from "@radix-ui/react-dropdown-menu";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import clsx from "clsx";
 
 export const DropdownMenuItem = forwardRef<
   ElementRef<typeof Item>,

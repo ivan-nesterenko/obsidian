@@ -1,16 +1,11 @@
 "use client";
 
-
 import { Range, Root, Thumb, Track } from "@radix-ui/react-slider";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 
 export const Slider = forwardRef<ElementRef<typeof Root>, ComponentPropsWithoutRef<typeof Root>>(
   ({ className, ...props }, ref) => (
-    <Root
-      className={clsx("relative flex w-full touch-none select-none items-center", className)}
-      ref={ref}
-      {...props}
-    >
+    <Root className={clsx("relative flex w-full touch-none select-none items-center", className)} ref={ref} {...props}>
       <Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-stone-900/20 dark:bg-stone-50/20">
         <Range className="absolute h-full bg-stone-900 dark:bg-stone-50" />
       </Track>

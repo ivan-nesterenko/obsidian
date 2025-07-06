@@ -3,6 +3,7 @@
 import { CheckboxItem, ItemIndicator } from "@radix-ui/react-dropdown-menu";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import clsx from "clsx";
 
 export const DropdownMenuCheckboxItem = forwardRef<
   ElementRef<typeof CheckboxItem>,

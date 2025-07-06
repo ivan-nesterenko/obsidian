@@ -10,10 +10,7 @@ export type FormSelectProps<
   control: Control<TFieldValues>;
   defaultValue?: PathValue<TFieldValues, TPath>;
   name: TPath;
-} & { containerClassName?: string } & Omit<
-    SelectProps,
-    "defaultValue" | "onBlur" | "onChange" | "value"
-  >;
+} & { containerClassName?: string } & Omit<SelectProps, "defaultValue" | "onBlur" | "onChange" | "value">;
 
 export const FormSelect = <
   TFieldValues extends FieldValues,

@@ -2,6 +2,7 @@
 
 import { SubContent } from "@radix-ui/react-dropdown-menu";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import clsx from "clsx";
 
 export const DropdownMenuSubContent = forwardRef<
   ElementRef<typeof SubContent>,

@@ -5,10 +5,7 @@ import { ToggleGroup, ToggleGroupProps } from "./toggle-group";
 
 export type FormToggleGroupProps<
   TFieldValues extends FieldValues,
-  TPath extends FieldPathByValue<
-    TFieldValues,
-    boolean | null | number | string | string[] | undefined
-  >,
+  TPath extends FieldPathByValue<TFieldValues, boolean | null | number | string | string[] | undefined>,
 > = {
   control: Control<TFieldValues>;
   defaultValue?: PathValue<TFieldValues, TPath>;
@@ -17,10 +14,7 @@ export type FormToggleGroupProps<
 
 export const FormToggleGroup = <
   TFieldValues extends FieldValues,
-  TPath extends FieldPathByValue<
-    TFieldValues,
-    boolean | null | number | string | string[] | undefined
-  >,
+  TPath extends FieldPathByValue<TFieldValues, boolean | null | number | string | string[] | undefined>,
 >({
   children,
   control,

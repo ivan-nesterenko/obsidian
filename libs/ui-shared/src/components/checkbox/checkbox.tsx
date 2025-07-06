@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Indicator, Root } from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";

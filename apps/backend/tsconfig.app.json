@@ -1,12 +1,15 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
     "types": ["node"],
     "emitDecoratorMetadata": true,
     "target": "es2021",
+    "paths": {
+      "@/shared/*": ["../../libs/shared/src/*"],
+    },
   },
-  "include": ["src/**/*.ts","**/*.d.ts"]
-
+  "include": ["src/**/*.ts", "**/*.d.ts"]
 }

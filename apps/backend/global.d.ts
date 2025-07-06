@@ -1,20 +1,9 @@
-import {
-  OnApplicationBootstrap,
-  OnApplicationShutdown,
-  OnModuleDestroy,
-  OnModuleInit,
-} from '@nestjs/common';
+import { OnApplicationBootstrap, OnApplicationShutdown, OnModuleDestroy, OnModuleInit } from "@nestjs/common";
 
 declare global {
-    type BaseService = Partial<
-      OnModuleInit &
-        OnApplicationBootstrap &
-        OnModuleDestroy &
-        OnApplicationShutdown
-    > &
-      Record<string, any>;
+  type BaseService = Partial<OnModuleInit & OnApplicationBootstrap & OnModuleDestroy & OnApplicationShutdown> &
+    Record<string, any>;
 
-  
   type Except<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
   type Optional<T> = { [K in keyof T]: T[K] } | { [K in keyof T]?: never };
@@ -42,7 +31,7 @@ declare global {
   }
 
   interface Number {
-    toLocaleString(locales?: 'en-US', options?: Intl.NumberFormatOptions): string;
+    toLocaleString(locales?: "en-US", options?: Intl.NumberFormatOptions): string;
   }
 
   interface ObjectConstructor {
@@ -54,10 +43,7 @@ declare global {
   }
 
   interface JSON {
-    parse<T = unknown>(
-      text: string,
-      reviver?: (this: unknown, key: string, value: unknown) => unknown,
-    ): T;
+    parse<T = unknown>(text: string, reviver?: (this: unknown, key: string, value: unknown) => unknown): T;
   }
 }
 

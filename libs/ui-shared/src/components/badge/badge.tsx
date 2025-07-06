@@ -1,8 +1,8 @@
-
-import { type VariantProps, clsx } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import { FC, HTMLAttributes } from "react";
+import clsx from "clsx";
 
-export const badgeVariants = clsx(
+export const badgeVariants = cva(
   "inline-flex items-center rounded-md border border-stone-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-stone-950 focus:ring-offset-2 dark:border-stone-800 dark:focus:ring-stone-300",
   {
     defaultVariants: {

@@ -3,6 +3,7 @@
 import { SubTrigger } from "@radix-ui/react-dropdown-menu";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import clsx from "clsx";
 
 export const DropdownMenuSubTrigger = forwardRef<
   ElementRef<typeof SubTrigger>,

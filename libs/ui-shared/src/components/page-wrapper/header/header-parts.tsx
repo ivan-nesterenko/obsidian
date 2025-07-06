@@ -1,5 +1,5 @@
-
 import { ReactElement, ReactNode, memo } from "react";
+import clsx from "clsx";
 
 export type HeaderLeftProps = {
   headerLeft?: ReactNode;
@@ -17,18 +17,9 @@ export type HeaderCenterProps = {
 };
 
 export const HeaderCenter = memo(
-  ({
-    headerCenter,
-    headerCenterClassName,
-    isHeaderCenterShown,
-  }: HeaderCenterProps): ReactElement | null => {
+  ({ headerCenter, headerCenterClassName, isHeaderCenterShown }: HeaderCenterProps): ReactElement | null => {
     return isHeaderCenterShown ? (
-      <div
-        className={clsx(
-          "mobile:w-1/3 mobile:justify-center flex items-center",
-          headerCenterClassName,
-        )}
-      >
+      <div className={clsx("mobile:w-1/3 mobile:justify-center flex items-center", headerCenterClassName)}>
         {headerCenter}
       </div>
     ) : null;
@@ -41,11 +32,9 @@ export type HeaderRightProps = {
   isHeaderRightShown?: boolean;
 };
 
-export const HeaderRight = memo(
-  ({ headerRight, isHeaderRightShown }: HeaderRightProps): ReactElement | null => {
-    return isHeaderRightShown ? (
-      <div className={clsx("mobile:w-1/3 flex items-center justify-end")}>{headerRight}</div>
-    ) : null;
-  },
-);
+export const HeaderRight = memo(({ headerRight, isHeaderRightShown }: HeaderRightProps): ReactElement | null => {
+  return isHeaderRightShown ? (
+    <div className={clsx("mobile:w-1/3 flex items-center justify-end")}>{headerRight}</div>
+  ) : null;
+});
 HeaderRight.displayName = "HeaderRight";

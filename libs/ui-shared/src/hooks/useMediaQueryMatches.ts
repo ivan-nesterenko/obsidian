@@ -1,6 +1,6 @@
-import { Breakpoint, BREAKPOINTS } from 'constants/breakpoints';
-import { up } from 'utils/up';
-import { useMediaQuery } from './useMediaQuery';
+import { Breakpoint, BREAKPOINTS } from "constants/breakpoints";
+import { up } from "utils/up";
+import { useMediaQuery } from "./useMediaQuery";
 
 export type MediaQueryMatches = Record<Breakpoint, boolean>;
 

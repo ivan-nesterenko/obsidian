@@ -1,4 +1,3 @@
-
 import { ReactNode, memo } from "react";
 
 import {
@@ -9,6 +8,7 @@ import {
   HeaderRight,
   HeaderRightProps,
 } from "./header-parts";
+import clsx from "clsx";
 
 export type HeaderProps = {
   header?: ReactNode;

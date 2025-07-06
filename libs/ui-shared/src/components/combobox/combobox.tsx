@@ -25,12 +25,12 @@ export const Combobox = <T extends { label: string; value: string }[]>({
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<ArrayElement<T> | null>(null);
 
-  const handleSelect: (value: string) => void = currentValue => {
+  const handleSelect: (value: string) => void = (currentValue) => {
     if (currentValue === selected?.value) {
       setSelected(null);
       onSelect(null);
     } else {
-      const newValue = options.find(option => option.value === currentValue) ?? null;
+      const newValue = options.find((option) => option.value === currentValue) ?? null;
       setSelected(newValue);
       onSelect(newValue);
     }
@@ -41,12 +41,7 @@ export const Combobox = <T extends { label: string; value: string }[]>({
   return (
     <Popover onOpenChange={setOpen} open={open}>
       <PopoverTrigger asChild>
-        <Button
-          aria-expanded={open}
-          className="w-[200px] justify-between"
-          role="combobox"
-          variant="outline"
-        >
+        <Button aria-expanded={open} className="w-[200px] justify-between" role="combobox" variant="outline">
           {selected ? selected.label : placeholder}
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -56,13 +51,10 @@ export const Combobox = <T extends { label: string; value: string }[]>({
           <CommandInput placeholder={placeholder} />
           <CommandEmpty>{emptyText}</CommandEmpty>
           <CommandGroup>
-            {options.map(option => (
+            {options.map((option) => (
               <CommandItem key={option.value} onSelect={handleSelect} value={option.value}>
                 <CheckIcon
-                  className={clsx(
-                    "ml-auto h-4 w-4",
-                    selected?.value === option.value ? "opacity-100" : "opacity-0",
-                  )}
+                  className={clsx("ml-auto h-4 w-4", selected?.value === option.value ? "opacity-100" : "opacity-0")}
                 />
                 {option.label}
               </CommandItem>
