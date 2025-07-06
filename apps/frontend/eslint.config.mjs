@@ -60,7 +60,9 @@ export default tseslint.config(
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
       "react/self-closing-comp": "warn",
+      "unicorn/no-abusive-eslint-disable": "off",
       "unicorn/prefer-global-this": "off",
+      "unicorn/prevent-abbreviations": "off",
     },
   },
 );
