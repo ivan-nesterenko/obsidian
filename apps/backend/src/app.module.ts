@@ -4,6 +4,7 @@ import { AppService } from "./app.service";
 import { ConfigModule } from "@nestjs/config";
 import { DrizzlePGModule } from "@knaadh/nestjs-drizzle-pg";
 import * as schema from "./db";
+import { VaultModule } from "./modules/vault/vault.module";
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import * as schema from "./db";
       config: { schema: { ...schema } },
     }),
     ConfigModule.forRoot({ isGlobal: true }),
+    VaultModule
   ],
   controllers: [AppController],
   providers: [AppService],
