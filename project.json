@@ -7,21 +7,14 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": true,
-        "commands": [
-          "nx run backend:serve",
-          "nx run frontend:serve",
-          "nx run electron-frontend:serve"
-        ]
+        "commands": ["nx run backend:serve", "nx run frontend:serve", "nx run electron-frontend:serve"]
       }
     },
     "serve": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "commands": [
-          "docker compose up -d --build",
-          "nx run obsidian:run"
-        ]
+        "commands": ["docker compose up -d --build", "nx run obsidian:run"]
       }
     }
   }

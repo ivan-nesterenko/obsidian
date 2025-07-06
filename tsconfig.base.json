@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "resolveJsonModule": true,
     "useDefineForClassFields": true,
     "allowJs": false,
     "rootDir": ".",
@@ -13,10 +14,7 @@
     "target": "ESNext",
     "module": "esnext",
     "strict": true,
-    "lib": [
-      "ESNext",
-      "dom"
-    ],
+    "lib": ["ESNext", "dom"],
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
@@ -27,15 +25,13 @@
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
     "paths": {
-      "@/ui-shared/*": [
-        "./libs/ui-shared/src/*"
-      ]
+      "@/ui-shared/*": ["libs/ui-shared/src/*"],
+      "@/shared/*": ["libs/shared/src/*"],
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
