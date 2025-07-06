@@ -1,6 +1,7 @@
 import { FC, useContext } from "react";
 import { GlobalContext } from "../global-provider/global-provider";
 import { clsx } from "clsx";
+import { WindowVaultManager } from "./window-vault-manager";
 
 const onClickMinimizeHandler = () => {
   window.electron.minimize();
@@ -14,7 +15,7 @@ const onClickCloseHandler = () => {
   window.electron.close();
 };
 
-const WindowHeader: FC = () => {
+export const WindowHeader: FC = () => {
   const globalContenxt = useContext(GlobalContext);
 
   if (!globalContenxt) {
@@ -29,21 +30,21 @@ const WindowHeader: FC = () => {
     );
   }
 
-  const { closeTab, createTab, setActiveTab, activeTab, tabs } = globalContenxt;
+  const { activeTab, closeTab, createTab, setActiveTab, tabs } = globalContenxt;
 
   return (
     <header className="flex h-[40px] w-full items-center justify-end gap-8 bg-blue-200 pr-6">
       <div className="flex gap-4">
         {tabs?.map((tab, index) => (
-          <button
-            className={clsx("flex p-2", index === activeTab ? "bg-amber-200" : "")}
+          <div
+            className={clsx("flex p-2", tab.id === activeTab.id ? "bg-amber-200" : "")}
             key={index}
-            onClick={() => setActiveTab!(index)}
+            onClick={() => setActiveTab!(tab)}
           >
-            {index}
+            {tab.id.slice(0, 4)}
             <span>{tab.title}</span>
-            <button onClick={() => closeTab(index)}>X</button>
-          </button>
+            <button onClick={() => closeTab(tab)}>X</button>
+          </div>
         ))}
         <button onClick={() => createTab()}>+</button>
       </div>
@@ -56,4 +57,5 @@ const WindowHeader: FC = () => {
   );
 };
 
-export default WindowHeader;
+WindowHeader.displayName = "WindowHeader";
+WindowHeader.displayName = "WindowHeader";

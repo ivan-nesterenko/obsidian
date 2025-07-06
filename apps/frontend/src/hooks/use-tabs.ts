@@ -1,31 +1,58 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import { defaultEmptyTab } from "../constants/default-tabs";
-import { Tab } from "../types/tab";
+import { useState } from "react";
+import { createDefaultEmptyTab, createDefaultNote } from "../constants/default-tabs";
+import { Tab, UseTabsOutput } from "../types/tab";
 
-type UseTabsResult = {
-  activeTab: number;
-  closeTab: (tabToRemove?: number) => void;
-  createTab: (newTab?: Tab) => void;
-  setActiveTab?: Dispatch<SetStateAction<number>>;
-  tabs: [] | Tab[];
-};
+// TODO: Refactor this hook to use Zustand.
 
-export const useTabs = (): UseTabsResult => {
-  const [tabs, setTabs] = useState<[] | Tab[]>([]);
-  const [activeTab, setActiveTab] = useState(0);
+export const useTabs = (): UseTabsOutput => {
+  const defaultTab = createDefaultNote();
 
-  const createTab = (newTab: Tab = defaultEmptyTab) => {
+  const [tabs, setTabs] = useState<[] | Tab[]>(() => [defaultTab]);
+  const [activeTab, setActiveTab] = useState<Tab>(() => defaultTab);
+
+  const createTab = (newTab?: Tab) => {
+    if (!newTab) {
+      newTab = createDefaultEmptyTab();
+    } else if (newTab) {
+      setActiveTab(newTab);
+    }
+
     setTabs((previousItems) => {
-      setActiveTab(activeTab + 1);
-      return [...previousItems.slice(0, activeTab + 1), newTab, ...previousItems.slice(activeTab + 1)];
+      const previousTabIndex = previousItems.findIndex((tab) => tab.id === activeTab.id);
+      return [...previousItems.slice(0, previousTabIndex + 1), newTab, ...previousItems.slice(previousTabIndex + 1)];
     });
   };
 
-  const closeTab = (tabToRemove = activeTab) => {
-    setTabs((previousItems) =>
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      previousItems.length === 1 ? [defaultEmptyTab] : previousItems?.filter((_, index) => index !== tabToRemove),
-    );
+  const closeTab = (tabToRemove?: Tab, tabToAdd?: Tab) => {
+    setTabs((previousItems) => {
+      let finalITabs;
+      let newActiveTab;
+      const currentActiveTab = previousItems.find((tab) => tab.id === activeTab.id) || previousItems[0];
+      const tabIdToRemove = tabToRemove?.id || currentActiveTab.id;
+
+      if (previousItems.length === 1) {
+        const newTab = tabToAdd ?? createDefaultEmptyTab();
+        setActiveTab(newTab);
+        return [newTab];
+      }
+
+      const previousTabIndex = previousItems.findIndex((tab) => tab.id === tabIdToRemove);
+      if (tabToAdd) {
+        previousItems[previousTabIndex] = tabToAdd;
+        finalITabs = previousItems;
+        newActiveTab = tabToAdd;
+      } else {
+        finalITabs = previousItems.filter((tab) => tab.id !== tabIdToRemove);
+        newActiveTab = finalITabs.includes(currentActiveTab)
+          ? currentActiveTab
+          : previousTabIndex > 0
+            ? finalITabs[previousTabIndex - 1]
+            : finalITabs[0];
+      }
+
+      setActiveTab(newActiveTab);
+      return finalITabs;
+    });
   };
 
   return { activeTab, closeTab, createTab, setActiveTab, tabs };

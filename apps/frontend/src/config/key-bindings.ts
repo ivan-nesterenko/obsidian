@@ -10,7 +10,8 @@ type Handlers = {
   deleteNote: () => void;
 };
 
-export const getBindingByName = (name: string): string | undefined => KeyBindings[name as keyof typeof KeyBindings];
+export const getBindingByKeys = (name: string): string | undefined =>
+  (Object.entries(KeyBindings).find(([, key]) => key === name) || [])[1];
 
 export function makeKeyBindings(handlers: Handlers): Record<string, () => void> {
   return {

@@ -1,3 +1,5 @@
+import { ElectronWindow } from "@/shared/types/electron";
+
 declare global {
   type DeepPartial<T> = T extends object
     ? {
@@ -42,11 +44,7 @@ declare global {
   }
 
   interface Window {
-    electron: {
-      close: () => void;
-      minimize: () => void;
-      toggleMaximize: () => void;
-    };
+    electron: ElectronWindow;
   }
 }
 
